@@ -23,19 +23,24 @@ class StatusCard extends GetView<RevenueCatController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
-                children: [
-                  const Icon(Icons.bolt, color: AppColor.accentPurpleLight, size: 20),
-                  const SizedBox(width: 8),
-                  Text(
-                    'RevenueCat SDK Status',
-                    style: AppTextStyle.getTextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
-                      color: AppColor.white,
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(Icons.bolt, color: AppColor.accentPurpleLight, size: 20),
+                    const SizedBox(width: 8),
+                    Flexible(
+                      child: Text(
+                        'RevenueCat SDK Status',
+                        style: AppTextStyle.getTextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.w700,
+                          color: AppColor.white,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               Obx(() {
                 final isInit = controller.isInitialized.value;

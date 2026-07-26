@@ -43,25 +43,29 @@ class UserIdentityCard extends GetView<RevenueCatController> {
                     child: const Icon(Icons.person_add_outlined, color: AppColor.accentCyan, size: 22),
                   ),
                   const SizedBox(width: 12),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Customer Login Required',
-                        style: AppTextStyle.getTextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700,
-                          color: AppColor.white,
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Customer Login Required',
+                          style: AppTextStyle.getTextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700,
+                            color: AppColor.white,
+                          ),
                         ),
-                      ),
-                      Text(
-                        'Enter your Customer ID to access subscriptions',
-                        style: AppTextStyle.getTextStyle(
-                          fontSize: 12,
-                          color: AppColor.secondaryTextColor,
+                        Text(
+                          'Enter your Customer ID to access subscriptions',
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: AppTextStyle.getTextStyle(
+                            fontSize: 12,
+                            color: AppColor.secondaryTextColor,
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ],
               ),
