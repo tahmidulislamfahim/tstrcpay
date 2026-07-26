@@ -451,4 +451,17 @@ Future<void> initPlatformState() async {
 
 3. Add test emails in **Google Play License Testing** and **Apple Sandbox Testers** to perform real test purchases on physical devices without getting charged.
 
+---
+
+### ⚠️ Important Note on Release Builds (`flutter build apk --release`)
+
+> [!WARNING]
+> **Why `Wrong API Key` appears in Release Builds with `test_...` keys:**
+> RevenueCat SDK contains a built-in security check that **forbids using `test_...` API keys in Release Mode**. If you compile a release build (`flutter build apk --release`) while using a `test_...` API key, RevenueCat will pop up:
+> *"Wrong API Key - This app is using a test API key... The app will close now to protect the security of test purchases."*
+> 
+> **To fix this:**
+> - For **Release APKs**, set your production `goog_...` (Android) or `appl_...` (iOS) API key in `.env`.
+> - For **Testing APKs**, compile using **Debug** or **Profile** mode: `flutter build apk --debug` or `flutter build apk --profile`.
+
 
