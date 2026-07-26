@@ -405,9 +405,12 @@ void _configEasyLoading() {
 - Navigate to **In-App Purchases** or **Subscriptions** and create your items.
 - Set up subscription groups, duration, and prices.
 
-#### Link RevenueCat to App Store Connect:
-- Generate an **In-App Purchase Key** (`.p8` file) or **Shared Secret** from App Store Connect.
-- In RevenueCat, go to **Apps & providers → App Store**, enter your Bundle ID, and upload the credentials/key.
+#### Enable In-App Purchase Capability in Xcode:
+- Unlike Android (which uses `AndroidManifest.xml` permissions), iOS handles StoreKit natively. No `Info.plist` XML permissions are required.
+- However, you must enable the **In-App Purchase** capability in Xcode:
+  1. Open `ios/Runner.xcworkspace` in Xcode.
+  2. Select **Runner** target → **Signing & Capabilities**.
+  3. Click **+ Capability** → Search and select **In-App Purchase**.
 
 ---
 
