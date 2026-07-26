@@ -34,41 +34,55 @@ class ActiveSubscriptionCard extends GetView<RevenueCatController> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                        color: AppColor.successGreen.withValues(alpha: 0.2),
-                        shape: BoxShape.circle,
+                Expanded(
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: AppColor.successGreen.withValues(alpha: 0.2),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.workspace_premium,
+                          color: AppColor.successGreen,
+                          size: 24,
+                        ),
                       ),
-                      child: const Icon(Icons.workspace_premium, color: AppColor.successGreen, size: 24),
-                    ),
-                    const SizedBox(width: 12),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Active Subscription',
-                          style: AppTextStyle.getTextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            color: AppColor.white,
-                          ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Active Subscription',
+                              style: AppTextStyle.getTextStyle(
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: AppColor.white,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              'Purchased & Verified by RevenueCat',
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: AppTextStyle.getTextStyle(
+                                fontSize: 11,
+                                color: AppColor.secondaryTextColor,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text(
-                          'Purchased & Verified by RevenueCat',
-                          style: AppTextStyle.getTextStyle(
-                            fontSize: 11,
-                            color: AppColor.secondaryTextColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 10,
+                    vertical: 4,
+                  ),
                   decoration: BoxDecoration(
                     color: AppColor.successGreen,
                     borderRadius: BorderRadius.circular(20),
@@ -114,20 +128,33 @@ class ActiveSubscriptionCard extends GetView<RevenueCatController> {
                           ),
                         ),
                         Text(
-                          entitlement.willRenew ? 'Auto-Renewing' : 'One-Time / Expiring',
+                          entitlement.willRenew
+                              ? 'Auto-Renewing'
+                              : 'One-Time / Expiring',
                           style: AppTextStyle.getTextStyle(
                             fontSize: 11,
                             fontWeight: FontWeight.w600,
-                            color: entitlement.willRenew ? AppColor.successGreen : AppColor.warningAmber,
+                            color: entitlement.willRenew
+                                ? AppColor.successGreen
+                                : AppColor.warningAmber,
                           ),
                         ),
                       ],
                     ),
                     const SizedBox(height: 6),
-                    _buildDetailRow('Product ID', entitlement.productIdentifier),
-                    _buildDetailRow('Purchase Date', _formatDate(entitlement.latestPurchaseDate)),
+                    _buildDetailRow(
+                      'Product ID',
+                      entitlement.productIdentifier,
+                    ),
+                    _buildDetailRow(
+                      'Purchase Date',
+                      _formatDate(entitlement.latestPurchaseDate),
+                    ),
                     if (entitlement.expirationDate != null)
-                      _buildDetailRow('Expiration Date', _formatDate(entitlement.expirationDate!)),
+                      _buildDetailRow(
+                        'Expiration Date',
+                        _formatDate(entitlement.expirationDate!),
+                      ),
                   ],
                 ),
               );
